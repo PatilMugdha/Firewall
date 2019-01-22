@@ -4,7 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+/**
+ * This class defines the required interfaces for accepting packet.
+ * @author patil
+ *
+ */
 public class Firewall {
 
 	private String filePath;
@@ -31,13 +38,27 @@ public class Firewall {
 	 * @param inputIPRange
 	 * @return boolean result
 	 */
-	public boolean accept_packet(String inputDirection, String inputProtocol, int inputPort, String inputIPRange) {
+	public boolean accept_packet(final String inputDirection, final String inputProtocol, final int inputPort,
+			final String inputIPRange) {
 
 		this.direction = inputDirection;
 		this.protocol = inputProtocol;
 		this.ip = inputIPRange;
 		this.port = inputPort;
-		return isPacketAllowed();
+		return isPacketValid() ? isPacketAllowed() : false;
+	}
+    
+	/**
+	 * This method will validate the packet ip and port before sending
+	 * for further processing.
+	 * @return true/false
+	 */
+	private boolean isPacketValid() {
+		Matcher matcher = Pattern.compile(Constants.IP_PATTERN).matcher(ip);
+		boolean isIPValid = matcher.matches();
+		matcher = Pattern.compile(Constants.PORT_PATTERN).matcher(String.valueOf(port));
+		boolean isPortValid = matcher.matches();
+		return isIPValid && isPortValid;
 	}
 
 	/**
@@ -81,8 +102,8 @@ public class Firewall {
 
 	/**
 	 * 
-	 * @param args Send filePath of the firewall rules. e.g: > Firewall.java
-	 *             rules.csv
+	 * @param args Send filePath of the firewall rules. 
+	 * e.g: > Firewall.java rules.csv
 	 */
 	public static void main(String[] args) {
 
