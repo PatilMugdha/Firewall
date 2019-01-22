@@ -1,6 +1,6 @@
 # Firewall
 
-Filter network packets using a set of rules 
+This assignment is to filter network packets using a set of rules.
 
 A)how you tested your solution
 The solution is tested using some test cases which include cases like-
@@ -41,4 +41,4 @@ C) any refinements or optimizations that you would’ve implemented if you had
 
 This will help in more realistic testing. Currently, the generated csv test file 
 has port ranges from 0 to any random port, and IP ranges from 0.0.0.0 to any random 
-port.    
+IP.    
