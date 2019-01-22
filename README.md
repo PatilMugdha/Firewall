@@ -28,8 +28,11 @@ In order to check if the IPs lie within range-
 2. Ports are also parsed and range compared with input port.
 
 3. The code is tested using a generated test file with 500K and 1M records. 
-   7 calls to test packets run in 4 seconds using 500K records rules file.
+   7 test junits run in 6 seconds using 500K records rules file.
    Approximately 2216 ms time is taken to scan 1M records file and filtering a packet.
+   
+4. Validations for IP and port are performed before reading csv to discard any invalid   
+   inputs.
 
 C) Any refinements or optimizations that you would’ve implemented if you had
    more time-
