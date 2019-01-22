@@ -3,7 +3,7 @@
 This assignment is to filter network packets using a set of rules.
 
 A)how you tested your solution
-The solution is tested using some test cases which include cases like-
+The solution is tested using some test cases which include-
 
 Block packets when-
 1. rule is not present, 
