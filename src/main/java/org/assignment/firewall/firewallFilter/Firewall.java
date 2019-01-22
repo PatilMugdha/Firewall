@@ -85,8 +85,12 @@ public class Firewall {
 	 *             rules.csv
 	 */
 	public static void main(String[] args) {
-		Firewall fw = new Firewall(args[0]);
+
+		Firewall fw = new Firewall("OneMRules.csv");
+		long start = System.currentTimeMillis();
 		System.out.println("Result: " + fw.accept_packet("outbound", "udp", 50843, "255.255.255.255"));
+		long end = System.currentTimeMillis();
+		System.out.println("Time taken to filter packet using 1M rules: " + (end - start) + " ms");
 	}
 
 }

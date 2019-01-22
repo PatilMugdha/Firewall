@@ -3,16 +3,34 @@ package org.assignment.firewall.firewallFilter;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * This test file contains different scenarios and corner cases to accept or
+ * reject a packet.
+ * 
+ * @author patil
+ *
+ */
 public class FirewallTest {
 
-	Firewall fw;
+	private Firewall fw;
+	private static long start;
+	private static long end;
+	private static int counter = 0;
+
+	@BeforeClass
+	public static void setStartTime() {
+		start = System.currentTimeMillis();
+	}
 
 	@Before
 	public void setup() {
-		fw = new Firewall("test1.csv");
+		counter++;
+		fw = new Firewall("HalfKRules.csv");
 	}
 
 	@Test
@@ -61,5 +79,12 @@ public class FirewallTest {
 		// rule is allowed: outbound,tcp,0-65534,0.0.0.0-255.255.255.255
 
 		assertFalse(fw.accept_packet("inbound", "udp", 65534, "255.255.255.255"));
+	}
+
+	@AfterClass
+	public static void trackFinishTime() {
+		end = System.currentTimeMillis();
+		System.out.println(
+				"Total time taken to run " + counter + " tests: " + (float) ((end - start) / 1000) + " seconds");
 	}
 }

@@ -22,7 +22,7 @@ public class RulesFileGenerator {
 
 	public static void main(String[] args) {
 
-		RulesFileGenerator app = new RulesFileGenerator();
+		RulesFileGenerator fileGenerator = new RulesFileGenerator();
 		File file = new File(args[0]);
 		try {
 			// create FileWriter object with file as parameter
@@ -36,8 +36,8 @@ public class RulesFileGenerator {
 
 			// add data to csv
 			for (int i = 0; i < Constants.NUMBER_ROWS; i++) {
-				String[] octetRange = { Constants.INITIAL_IP, app.getIP() };
-				String[] portRange = { "" + Constants.MIN_PORT_VALUE, app.getPort() };
+				String[] octetRange = { Constants.INITIAL_IP, fileGenerator.getIP() };
+				String[] portRange = { "" + Constants.MIN_PORT_VALUE, fileGenerator.getPort() };
 				String[] data1 = { direction[new Random().nextInt(2)], protocol[new Random().nextInt(2)],
 						portRange[0] + Constants.DASH + portRange[1], octetRange[0] + Constants.DASH + octetRange[1] };
 				writer.writeNext(data1);

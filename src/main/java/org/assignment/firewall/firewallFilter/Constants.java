@@ -1,10 +1,18 @@
 package org.assignment.firewall.firewallFilter;
 
+/**
+ * List of constants used. Constants are package-private.
+ * 
+ * @author patil
+ *
+ */
 public class Constants {
-	
+
+	static String DOT_ESCAPED = "\\.";
+	static int MAX_POWER = 3;
 	static String COMMA = ",";
 	static char COMMA_CHAR = ',';
-	static int NUMBER_ROWS = 500000;
+	static int NUMBER_ROWS = 500000 * 2;
 	static String INITIAL_IP = "0.0.0.0";
 	static String DASH = "-";
 	static String INBOUND = "inbound";
